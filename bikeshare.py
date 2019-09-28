@@ -83,9 +83,9 @@ def main():
     
     
     def common_station_trip(data):
-        '''showing the most common start, end, and combination of start and end travels
-        inputs:
-                data: the city the user selected'''
+        '''Showing the most common start station, end station, and combination of start and end stations for travels.
+           Inputs:
+               data: the city the user selected'''
         
         start_stat = pd.DataFrame(data['Start Station'])
         start_stat['End Station'] = data['End Station']
