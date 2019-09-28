@@ -29,7 +29,10 @@ def main():
             user_input = input('you did not enter a right input.\nPlease enter\n\
 \n1 for Chicago\n\
 2 for NewYork City\n\
-3 for Washington: \n')
+3 for Washington \n\
+4 to exit')
+        if user_input == '4':
+            return user_input
         
     data = pd.read_csv(cities[user_input])
     
