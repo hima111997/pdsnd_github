@@ -10,23 +10,30 @@ def main():
     
     '''Selecting and filtering inputs and reading data'''
     user_input = ''
-    cities = {'1': 'chicago.csv', '2':'new_york_city.csv','3':'washington.csv'}
+    cities = {'1': 'chicago.csv',
+              '2':'new_york_city.csv',
+              '3':'washington.csv'}
       
     while user_input not in ['1','2','3','4']:   
         user_input = input('please select which city you want to run the statistics on:\n\
         (type the number of the city)\n\
-        \n1 for Chicago\n\
+\n1 for Chicago\n\
 2 for NewYork city\n\
 3 for Washington\n\
 4 to exit\n')
+        
         if user_input in ['1','2','3']:
             break
         elif  user_input == '4':
             return user_input
         while user_input not in ['1','2','3','4']:
-            user_input = input('you did not enter a right input.\nPlease enter \n1 for Chicago\n\
+            user_input = input('you did not enter a right input.\nPlease enter\n\
+\n1 for Chicago\n\
 2 for NewYork City\n\
-3 for Washington: \n')
+3 for Washington \n\
+4 to exit')
+        if user_input == '4':
+            return user_input
         
     data = pd.read_csv(cities[user_input])
     
@@ -105,16 +112,16 @@ The most common End Station during 2017 is {} with {} travels.'.format(comm_star
         
         user_info = pd.DataFrame(data['User Type'])
         counts = user_info.groupby(['User Type']).size()
-        
         print('\nThis city has {} customer types.'.format(len(counts.index)))
+        
         for i in counts.index:
             print('There are {} as customer type "{}"'.format(counts[i], i))
         
         if user_input != '3':
             gender_type = pd.DataFrame(data['Gender'])
-            gender_type = gender_type.groupby(['Gender']).size()
-            
+            gender_type = gender_type.groupby(['Gender']).size()    
             print('\nThere are {} who did not enter their Gender type'.format(len(data['Gender'])- gender_type.sum()))
+            
             for i in gender_type.index:
                 print('There are {} persons as {}'.format(gender_type[i], i))
             
