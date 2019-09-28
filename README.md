@@ -1,15 +1,34 @@
 ### Date created
-Include the date you created this project and README file.
+Creation time : saturday 28/9/2019
 
-### Project Title
-Replace the Project Title
+## Bikeshare
 
 ### Description
-Describe what your project is about and what it does
+This bikishare.py file calculates:
+
+	1- Popular times of travel (month, day of week, hour)
+    2- Trip duration (total travel time, average travel time)
+    3- Popular stations and trip (most common start station, most common end station, most common trip from start to end)
+    4- User info (counts of each user type, counts of each gender, earliest, most recent, and most common year of birth )
+
+    for one of three cities (Chicago, New york, and Washington) each time it runs.
 
 ### Files used
-Include the files used
+It uses three .csv files named (chicago.csv, new_york_city.csv, and washington.csv)
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+Websites that helped me:
+
+> ritchieng.com
+> cmdlinetips.com
+> datascience.stackexchange.com
+> stackoverflow.com
+> mantidproject.org
+> geeksforgeeks.org
+> thispointer.com
+> pandas.pydata.org
+> docs.python.org
+> interviewqs.com
+> programiz.com
+> kite.com
 
