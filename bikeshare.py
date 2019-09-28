@@ -1,10 +1,11 @@
 import pandas as pd
 
 def main():
-    '''This function calculates Popular times of travel (month, day of week, hour),
-    Trip duration (total travel time, average travel time),
-    Popular stations and trip (most common start station, most common end station, most common trip from start to end),
-    User info (counts of each user type, counts of each gender, earliest, most recent, and most common year of birth )'''
+    '''This function calculates:
+        1- Popular times of travel (month, day of week, hour)
+        2- Trip duration (total travel time, average travel time)
+        3- Popular stations and trip (most common start station, most common end station, most common trip from start to end)
+        4- User info (counts of each user type, counts of each gender, earliest, most recent, and most common year of birth ).'''
 
     
     '''Selecting and filtering inputs and reading data'''
@@ -30,10 +31,9 @@ def main():
     data = pd.read_csv(cities[user_input])
     
     def common_time(data):
-        ''' common time: getting the the most common month, day, hour in which most rentals happened.
-            
-        inputs:
-            data: the city the user selected '''
+        '''Common time: getting the most common month, day, hour in which most rentals happened.
+           Inputs:
+               data: the city the user selected.'''
         
         
         month_dic = {1:'January', 2:'February', 3:'March', 4:'April', 5:'May',
@@ -45,7 +45,7 @@ def main():
         hour_dic = {13:'1 Pm', 14:'2 Pm',15:'3 Pm',16:'4 Pm',17:'5 Pm',18:'6 Pm',
                     19:'7 Pm',20:'8 Pm',21:'9 Pm',22:'10 Pm',23:'11 Pm'}
         
-        '''adding the month, day of week, and hour in a seperate series'''
+        '''Adding the month, day of week, and hour in a seperate series.'''
         
         data['Start Time'] = pd.to_datetime(data['Start Time'])
         time_ser = pd.DataFrame(data['Start Time'])
@@ -54,7 +54,7 @@ def main():
         time_ser['day of week'] = data['Start Time'].dt.weekday
         time_ser['hour'] = data['Start Time'].dt.hour
         
-        '''grouping by month, day_of_week, and hour in seperate serieses'''
+        '''Grouping by month, day of week, and hour in seperate serieses.'''
         
         month = time_ser.groupby(['month']).size()
         month.rename(index=month_dic, inplace = True)
@@ -71,10 +71,9 @@ def main():
         print('\nAnalysis finished!\n\nthe results are:\n{}{}{}'.format(month_result, dow_result, hour_result))
     
         def travel_time(data):
-            ''' calculate the total and mean travel time.
-            
-            inputs:
-                data: the city the user selected'''
+            '''Calculate the total and mean travel time.
+               Inputs:
+                   data: the city the user selected'''
             
             dur_sum = data['travel time'].sum()
             mean = data['travel time'].mean()
@@ -100,9 +99,9 @@ The most common End Station during 2017 is {} with {} travels.'.format(comm_star
     
     def cst_types_gender(data,user_input):
         '''cst_types_gender calculates the number of each customer type, earliest, recent, and most common birth year.
-        inputs:
-            data: the data selected by the user
-            user_input: the number corresponding to the data'''
+           Inputs:
+               data: the data selected by the user
+               user_input: the number corresponding to the data'''
         
         user_info = pd.DataFrame(data['User Type'])
         counts = user_info.groupby(['User Type']).size()
@@ -138,7 +137,7 @@ The most common End Station during 2017 is {} with {} travels.'.format(comm_star
     
     def show_5lines(data):
         '''Showing 5 lines of raw data at a time on user request.
-        inputs:
+           Inputs:
                 data: the city the user selected'''
         
         show_5 = input('Do you want to see the raw data?\n\n\
@@ -166,7 +165,7 @@ The most common End Station during 2017 is {} with {} travels.'.format(comm_star
 user_input = main()
 
 while True:
-    '''rerunning the analysis, exit on user request'''
+    '''Re-running the analysis or exit on user request.'''
     
     if user_input == '4':
         break
